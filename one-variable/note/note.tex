@@ -60,41 +60,39 @@ $\NN$を非負整数の集合とする．
 このように，変数を含み「$(式) \bw (式)$」という形で表される式がいくつか与えられたとき，
 それらを満たす解の集合を得る方法を，様々な場合について考える．
 \section{1変数の場合}
-$\NN^* \times \NN^*$の部分集合$P, Q$が与えられる．
+有限集合$P, Q \subset \NN^* \times \NN^*$が与えられる．
 任意の$(\boldsymbol{a}, \boldsymbol{b}) \in P$について$(\boldsymbol{x}, \boldsymbol{a}) \bw \boldsymbol{b}$を満たし，
 任意の$(\boldsymbol{c}, \boldsymbol{d}) \in Q$について$\boldsymbol{c} \bw (\boldsymbol{x}, \boldsymbol{d})$を満たすような
 $\boldsymbol{x} \in \NN^*$全体の集合$S(P, Q)$を求めたい．
 
-$\boldsymbol{c} = \varepsilon$かつ$\boldsymbol{d} \ne \varepsilon$
-であるような$(\boldsymbol{c}, \boldsymbol{d}) \in Q$が存在する場合，
-$S(P, Q) = \varnothing$となる．
-$(\boldsymbol{a}, \boldsymbol{b}) \in P$において
-$\boldsymbol{b} = \varepsilon$の場合は
-任意の$\boldsymbol{x} \in \NN^*$が$(\boldsymbol{x}, \boldsymbol{a}) \bw \boldsymbol{b} = \varepsilon$を満たし，
-$(\boldsymbol{c}, \boldsymbol{d}) \in Q$において
-$\boldsymbol{c} = \boldsymbol{d} = \varepsilon$の場合は
-任意の$\boldsymbol{x} \in \NN^*$が$\boldsymbol{c} = \varepsilon \bw (\boldsymbol{x}, \boldsymbol{d})$を満たすから，
-$S(P \setminus (\NN^* \times \{\varepsilon\}), Q \setminus \{(\varepsilon, \varepsilon)\}) = S(P, Q)$である．
-以下，$(\boldsymbol{a}, \boldsymbol{b}) \in P$ならば$\boldsymbol{b} \ne \varepsilon$であり，
-$(\boldsymbol{c}, \boldsymbol{d}) \in Q$ならば$\boldsymbol{c} \ne \varepsilon$であると仮定する．
-
 $\boldsymbol{x} = \varepsilon$が解となることは，
 任意の$(\boldsymbol{a}, \boldsymbol{b}) \in P$について$\boldsymbol{a} \bw \boldsymbol{b}$が成り立ち，
 かつ任意の$(\boldsymbol{c}, \boldsymbol{d}) \in Q$について$\boldsymbol{c} \bw \boldsymbol{d}$が成り立つことと同値である．
-以下，$\boldsymbol{x} = \varepsilon$以外の解を探すために$\boldsymbol{x} \ne \varepsilon$と仮定する．
+以下，$\boldsymbol{x} = \varepsilon$以外の解$S'(P, Q) = S(P, Q) \setminus \{\varepsilon\}$を求める．
 
-任意の$(\boldsymbol{a}, \boldsymbol{b}) \in P$について
-$\boldsymbol{x} \ne \varepsilon$，$\boldsymbol{b} \ne \varepsilon$であるから，
-$(\boldsymbol{x}, \boldsymbol{a}) \bw \boldsymbol{b}$は，
+$(\varepsilon, \boldsymbol{d}) \in Q$が存在する場合，
+$\varepsilon \bw (\boldsymbol{x}, \boldsymbol{d})$より
+$\boldsymbol{x} = \boldsymbol{d} = \varepsilon$でなければいけないため
+$S'(P, Q) = \varnothing$．
+一方$(\boldsymbol{a}, \boldsymbol{b}) \in P$において
+$\boldsymbol{b} = \varepsilon$の場合は，
+任意の$\boldsymbol{x} \in \NN^*$が$(\boldsymbol{x}, \boldsymbol{a}) \bw \boldsymbol{b} = \varepsilon$を満たすから，
+$S'(P \setminus (\NN^* \times \{ \varepsilon \}), Q) = S'(P, Q)$である．
+以下，$(\boldsymbol{a}, \boldsymbol{b}) \in P$ならば$\boldsymbol{b} \ne \varepsilon$であり，
+$(\boldsymbol{c}, \boldsymbol{d}) \in Q$ならば$\boldsymbol{c} \ne \varepsilon$であると仮定する．
+
+任意の$(\boldsymbol{a}, \boldsymbol{b}) \in P$について，
+$\boldsymbol{x} \ne \varepsilon$，$\boldsymbol{b} \ne \varepsilon$より，
+$(\boldsymbol{x}, \boldsymbol{a}) \bw \boldsymbol{b}$は
 $\head \boldsymbol{x} = \head \boldsymbol{b}$かつ
 $(\tail \boldsymbol{x}, \boldsymbol{a}) \bw \tail \boldsymbol{b}$
 と同値である．
-同様に，任意の$(\boldsymbol{c}, \boldsymbol{d}) \in Q$について
-$\boldsymbol{c} \ne \varepsilon$，$\boldsymbol{x} \ne \varepsilon$であるから，
-$\boldsymbol{c} \bw (\boldsymbol{x}, \boldsymbol{d})$は，
+同様に，任意の$(\boldsymbol{c}, \boldsymbol{d}) \in Q$について，
+$\boldsymbol{c} \ne \varepsilon$，$\boldsymbol{x} \ne \varepsilon$より，
+$\boldsymbol{c} \bw (\boldsymbol{x}, \boldsymbol{d})$は
 $\head \boldsymbol{c} = \head \boldsymbol{x}$かつ
 $\tail\boldsymbol{c} \bw (\tail\boldsymbol{x}, \boldsymbol{d})$と同値である．
-よって，
+従って，
 \begin{itemize}
   \item $P_\text{head} = \{\head \boldsymbol{b} \mid (\boldsymbol{a}, \boldsymbol{b}) \in P\}$
   \item $P_\text{tail} = \{(\boldsymbol{a}, \tail \boldsymbol{b}) \mid (\boldsymbol{a}, \boldsymbol{b}) \in P\}$
@@ -103,12 +101,19 @@ $\tail\boldsymbol{c} \bw (\tail\boldsymbol{x}, \boldsymbol{d})$と同値であ�
 \end{itemize}
 とおくと，任意の$h \in P_\text{head} \cup Q_\text{head}$について$\head \boldsymbol{x} \in h$が成り立ち，
 かつ$\tail \boldsymbol{x} \in S(P', Q')$が成り立つとき，かつそのときに限り，
-$\boldsymbol{x} \in S(P, Q)$が成り立つ．
+$\boldsymbol{x} \in S'(P, Q)$が成り立つ．
 
 以上から，$P, Q \subset \NN^* \times \NN^*$を受け取って$S(P, Q)$を返す
 関数\textsc{SolveSingleVariable}のアルゴリズムは以下のようになる．
 \begin{algorithmic}
   \Function{SolveSingleVariable}{$P$, $Q$}
+    \State $S \gets \varnothing$
+    \If{
+      $\boldsymbol{a} \bw \boldsymbol{b}$ for all $(\boldsymbol{a}, \boldsymbol{b}) \in P$
+      \textbf{and} $\boldsymbol{c} \bw \boldsymbol{d}$ for all $(\boldsymbol{c}, \boldsymbol{d}) \in Q$
+    }
+      \State $S \gets \{ \varepsilon \}$
+    \EndIf
     \State $P_\text{head}, P_\text{tail}, Q_\text{head}, Q_\text{tail} \gets \varnothing$
     \ForAll{$(\boldsymbol{a}, \boldsymbol{b}) \in P$}
       \If{$\boldsymbol{b} \ne \varepsilon$}
@@ -118,9 +123,7 @@ $\boldsymbol{x} \in S(P, Q)$が成り立つ．
     \EndFor
     \ForAll{$(\boldsymbol{c}, \boldsymbol{d}) \in Q$}
       \If{$\boldsymbol{c} = \varepsilon$}
-        \If{$\boldsymbol{d} \ne \varepsilon$}
-          \State \Return $\varnothing$
-        \EndIf
+        \State \Return $S$
       \Else
         \State $Q_\text{head} \gets Q_\text{head} \cup \{\head \boldsymbol{c}\}$
         \State $Q_\text{tail} \gets Q_\text{tail} \cup \{(\tail \boldsymbol{c}, \boldsymbol{d})\}$
@@ -128,13 +131,6 @@ $\boldsymbol{x} \in S(P, Q)$が成り立つ．
     \EndFor
     \If{$P_\text{head} = Q_\text{head} = \varnothing$}
       \State \Return $\NN^*$
-    \EndIf
-    \State $S \gets \varnothing$
-    \If{
-      $\boldsymbol{a} \bw \boldsymbol{b}$ for all $(\boldsymbol{a}, \boldsymbol{b}) \in P$
-      \textbf{and} $\boldsymbol{c} \bw \boldsymbol{d}$ for all $(\boldsymbol{c}, \boldsymbol{d}) \in Q$
-    }
-      \State $S \gets \{ \varepsilon \}$
     \EndIf
     \If{$P_\text{head} \cup Q_\text{head} = \{x_1\}$ for some $x_1 \in \NN^*$}
       \State $S \gets S \cup \{ (x_1, \boldsymbol{x}') \mid \boldsymbol{x}' \in \Call{SolveSingleVariable}{P_\text{tail}, Q_\text{tail}} \}$

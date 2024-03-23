@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.18.0 (TeX Live 2024)  (format=lualatex 2024.3.15)  24 MAR 2024 00:09
+This is LuaHBTeX, Version 1.18.0 (TeX Live 2024)  (format=lualatex 2024.3.15)  24 MAR 2024 04:05
  restricted system commands enabled.
  file:line:error style messages enabled.
 **note.tex
@@ -574,13 +574,13 @@ LaTeX Font Info:    Font shape `JY3/gt/m/n' will be
 
 {/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}](load cache: extra_lmromancaps10-regular.luc)
 LaTeX Font Info:    Font shape `JT3/mc/m/sc' in size <10> not available
-(Font)              Font shape `JT3/mc/m/n' tried instead on input line 109.
+(Font)              Font shape `JT3/mc/m/n' tried instead on input line 107.
 LaTeX Font Info:    Font shape `JT3/mc/m/n' will be
-(Font)              scaled to size 9.24713pt on input line 109.
+(Font)              scaled to size 9.24713pt on input line 107.
 LaTeX Font Info:    Font shape `JY3/mc/m/sc' in size <10> not available
-(Font)              Font shape `JY3/mc/m/n' tried instead on input line 109.
+(Font)              Font shape `JY3/mc/m/n' tried instead on input line 107.
 LaTeX Font Info:    Font shape `JY3/mc/m/n' will be
-(Font)              scaled to size 9.24713pt on input line 109.
+(Font)              scaled to size 9.24713pt on input line 107.
  [2] (./note.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
@@ -589,16 +589,16 @@ L3 programming layer <2024-03-14>
 )
 
 Here is how much of LuaTeX's memory you used:
- 5398 strings out of 476435
- 195698,1977958 words of node,token memory allocated
+ 5395 strings out of 476435
+ 195703,1977958 words of node,token memory allocated
  997 words of node memory still in use:
    10 hlist, 2 vlist, 5 rule, 2 glue, 4 kern, 1 glyph, 179 attribute, 54 glue_spec, 27 attribute_list, 1 write, 13 user_defined nodes
-   avail lists: 1:43,2:59073,3:573,4:509,5:148,6:72,7:6942,8:42,9:2392,10:14,11:19
- 27369 multiletter control sequences out of 65536+600000
+   avail lists: 1:43,2:57392,3:565,4:491,5:146,6:68,7:6746,8:42,9:2312,10:11,11:19
+ 27366 multiletter control sequences out of 65536+600000
  61 fonts using 37759687 bytes
  125i,6n,128p,1885b,334s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/opentype/public/lm/lmromancaps10-regular.otf></usr/local/texlive/2024/texmf-dist/fonts/opentype/public/lm/lmroman7-regular.otf></usr/local/texlive/2024/texmf-dist/fonts/opentype/public/haranoaji/HaranoAjiGothic-Medium.otf></usr/local/texlive/2024/texmf-dist/fonts/opentype/public/lm/lmsans12-regular.otf></usr/local/texlive/2024/texmf-dist/fonts/opentype/public/lm/lmroman10-bold.otf></usr/local/texlive/2024/texmf-dist/fonts/opentype/public/lm/lmroman10-regular.otf></usr/local/texlive/2024/texmf-dist/fonts/opentype/public/haranoaji/HaranoAjiMincho-Regular.otf></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on note.pdf (2 pages, 125890 bytes).
+Output written on note.pdf (2 pages, 125092 bytes).
 
 PDF statistics: 96 PDF objects out of 1000 (max. 8388607)
  61 compressed objects within 1 object stream
