@@ -1,0 +1,145 @@
+\documentclass{ltjsarticle}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{enumitem}
+\usepackage{algorithm, algpseudocode}
+\newcommand\NN{\mathbb{N}}
+\newcommand\bw{\mathrel{\text{b.w.}}}
+\DeclareMathOperator\head{head}
+\DeclareMathOperator\tail{tail}
+\begin{document}
+空でない集合$A$に対し，
+$A$の有限列全体の集合$\bigcup_{n = 0}^\infty A^n$を$A^*$と書く．
+ただし$A^0$は空列$\varepsilon$のみを要素としてもつ集合$\{ \varepsilon \}$とする．
+$\boldsymbol{a} = (a_1, \dotsc, a_n) \in A^*$ ($n > 0$)の長さ$n$を$\lvert\boldsymbol{a}\rvert$と書き，
+$\lvert\varepsilon\rvert = 0$とする．
+$\boldsymbol{a} = (a_1, \dotsc, a_n) \in A^*$ ($n \ge 2$)に対し，$\head\boldsymbol{a} = a_1$，$\tail\boldsymbol{a} = (a_2, \dotsc, a_n)$とする．
+$a \in A^1 = A$に対しては$\head a = a$，$\tail a = \varepsilon$とする．
+$\boldsymbol{a} = (a_1, \dotsc, a_m) \in A^*$ ($m > 0$)と
+$\boldsymbol{b} = (b_1, \dotsc, b_n) \in A^*$ ($n > 0$)の連結を
+$(\boldsymbol{a}, \boldsymbol{b}) = (a_1, \dotsc, a_m, b_1, \dotsc, b_n) \in A^*$と定義する．
+$\boldsymbol{a} \in A^*$に対し
+$(\boldsymbol{a}, \varepsilon) = (\varepsilon, \boldsymbol{a}) = \boldsymbol{a}$とする．
+
+$\boldsymbol{a}, \boldsymbol{b} \in A^*$に対し，
+2項関係$\boldsymbol{a} \bw \boldsymbol{b}$（b.w. は begins with の略）を次のように定義する：
+ある$\boldsymbol{c} \in A^*$が存在して$\boldsymbol{a} = (\boldsymbol{b}, \boldsymbol{c})$であるとき，
+またそのときに限り，$\boldsymbol{a} \bw \boldsymbol{b}$である．以下が成り立つ．
+\begin{itemize}
+  \item 任意の$\boldsymbol{a} \in A^*$について，$\boldsymbol{a} \bw \boldsymbol{a}$である．
+  \item 任意の$\boldsymbol{a}, \boldsymbol{b} \in A^*$について，
+    $\boldsymbol{a} \bw \boldsymbol{b}$かつ$\boldsymbol{b} \bw \boldsymbol{a}$ならば
+    $\boldsymbol{a} = \boldsymbol{b}$である．
+  \item 任意の$\boldsymbol{a}, \boldsymbol{b}, \boldsymbol{c} \in A^*$について，
+    $\boldsymbol{a} \bw \boldsymbol{b}$かつ$\boldsymbol{b} \bw \boldsymbol{c}$ならば
+    $\boldsymbol{a} \bw \boldsymbol{c}$である．
+  \item 任意の$\boldsymbol{a} \in A^*$について，$\boldsymbol{a} \bw \varepsilon$である．
+  \item 任意の$\boldsymbol{a}, \boldsymbol{b} \in A^*$について，
+    $\boldsymbol{a} \bw \boldsymbol{b}$ならば$\lvert\boldsymbol{a}\rvert \ge \lvert\boldsymbol{b}\rvert$である．
+  \item 任意の$\boldsymbol{a}, \boldsymbol{b} \in A^*$ ($\boldsymbol{a}, \boldsymbol{b} \ne \varepsilon$)について，
+    $\boldsymbol{a} \bw \boldsymbol{b}$は$\head\boldsymbol{a} = \head\boldsymbol{b}$かつ$\tail\boldsymbol{a} \bw \tail\boldsymbol{b}$と同値である．
+\end{itemize}
+
+$\NN$を非負整数の集合とする．
+
+これから，「b.w.を含む式を解く」ということについて考えたい．
+以下はその例である．
+\begin{itemize}
+  \item $\boldsymbol{x} \in \NN^*$に対し，
+    $(\boldsymbol{x}, 1, 2, 1) \bw (1, 2, 1)$は，
+    以下のいずれかが成り立つことと同値である．
+    \begin{itemize}
+      \item $\boldsymbol{x} = \varepsilon$．
+      \item $\boldsymbol{x} = (1, 2)$．
+      \item ある$\boldsymbol{t} \in \NN^*$が存在して$\boldsymbol{x} = (1, 2, 1, \boldsymbol{t})$．
+    \end{itemize}
+  \item $\boldsymbol{x}, \boldsymbol{y} \in \NN^*$に対し，
+    $(2, 1, 1) \bw (\boldsymbol{x}, 1)$かつ$\boldsymbol{x} \bw (\boldsymbol{y}, 1)$が成り立つことは，
+    $\boldsymbol{x} = (2, 1)$かつ$\boldsymbol{y} = 2$が成り立つことと同値である．
+\end{itemize}
+
+このように，変数を含み「$(式) \bw (式)$」という形で表される式がいくつか与えられたとき，
+それらを満たす解の集合を得る方法を，様々な場合について考える．
+\section{1変数の場合}
+$\NN^* \times \NN^*$の部分集合$P, Q$が与えられる．
+任意の$(\boldsymbol{a}, \boldsymbol{b}) \in P$について$(\boldsymbol{x}, \boldsymbol{a}) \bw \boldsymbol{b}$を満たし，
+任意の$(\boldsymbol{c}, \boldsymbol{d}) \in Q$について$\boldsymbol{c} \bw (\boldsymbol{x}, \boldsymbol{d})$を満たすような
+$\boldsymbol{x} \in \NN^*$全体の集合$S(P, Q)$を求めたい．
+
+$\boldsymbol{c} = \varepsilon$かつ$\boldsymbol{d} \ne \varepsilon$
+であるような$(\boldsymbol{c}, \boldsymbol{d}) \in Q$が存在する場合，
+$S(P, Q) = \varnothing$となる．
+$(\boldsymbol{a}, \boldsymbol{b}) \in P$において
+$\boldsymbol{b} = \varepsilon$の場合は
+任意の$\boldsymbol{x} \in \NN^*$が$(\boldsymbol{x}, \boldsymbol{a}) \bw \boldsymbol{b} = \varepsilon$を満たし，
+$(\boldsymbol{c}, \boldsymbol{d}) \in Q$において
+$\boldsymbol{c} = \boldsymbol{d} = \varepsilon$の場合は
+任意の$\boldsymbol{x} \in \NN^*$が$\boldsymbol{c} = \varepsilon \bw (\boldsymbol{x}, \boldsymbol{d})$を満たすから，
+$S(P \setminus (\NN^* \times \{\varepsilon\}), Q \setminus \{(\varepsilon, \varepsilon)\}) = S(P, Q)$である．
+以下，$(\boldsymbol{a}, \boldsymbol{b}) \in P$ならば$\boldsymbol{b} \ne \varepsilon$であり，
+$(\boldsymbol{c}, \boldsymbol{d}) \in Q$ならば$\boldsymbol{c} \ne \varepsilon$であると仮定する．
+
+$\boldsymbol{x} = \varepsilon$が解となることは，
+任意の$(\boldsymbol{a}, \boldsymbol{b}) \in P$について$\boldsymbol{a} \bw \boldsymbol{b}$が成り立ち，
+かつ任意の$(\boldsymbol{c}, \boldsymbol{d}) \in Q$について$\boldsymbol{c} \bw \boldsymbol{d}$が成り立つことと同値である．
+以下，$\boldsymbol{x} = \varepsilon$以外の解を探すために$\boldsymbol{x} \ne \varepsilon$と仮定する．
+
+任意の$(\boldsymbol{a}, \boldsymbol{b}) \in P$について
+$\boldsymbol{x} \ne \varepsilon$，$\boldsymbol{b} \ne \varepsilon$であるから，
+$(\boldsymbol{x}, \boldsymbol{a}) \bw \boldsymbol{b}$は，
+$\head \boldsymbol{x} = \head \boldsymbol{b}$かつ
+$(\tail \boldsymbol{x}, \boldsymbol{a}) \bw \tail \boldsymbol{b}$
+と同値である．
+同様に，任意の$(\boldsymbol{c}, \boldsymbol{d}) \in Q$について
+$\boldsymbol{c} \ne \varepsilon$，$\boldsymbol{x} \ne \varepsilon$であるから，
+$\boldsymbol{c} \bw (\boldsymbol{x}, \boldsymbol{d})$は，
+$\head \boldsymbol{c} = \head \boldsymbol{x}$かつ
+$\tail\boldsymbol{c} \bw (\tail\boldsymbol{x}, \boldsymbol{d})$と同値である．
+よって，
+\begin{itemize}
+  \item $P_\text{head} = \{\head \boldsymbol{b} \mid (\boldsymbol{a}, \boldsymbol{b}) \in P\}$
+  \item $P_\text{tail} = \{(\boldsymbol{a}, \tail \boldsymbol{b}) \mid (\boldsymbol{a}, \boldsymbol{b}) \in P\}$
+  \item $Q_\text{head} = \{\head \boldsymbol{c} \mid (\boldsymbol{c}, \boldsymbol{d}) \in Q\}$
+  \item $Q_\text{tail} = \{(\tail \boldsymbol{c}, \boldsymbol{d}) \mid (\boldsymbol{c}, \boldsymbol{d}) \in Q\}$
+\end{itemize}
+とおくと，任意の$h \in P_\text{head} \cup Q_\text{head}$について$\head \boldsymbol{x} \in h$が成り立ち，
+かつ$\tail \boldsymbol{x} \in S(P', Q')$が成り立つとき，かつそのときに限り，
+$\boldsymbol{x} \in S(P, Q)$が成り立つ．
+
+以上から，$P, Q \subset \NN^* \times \NN^*$を受け取って$S(P, Q)$を返す
+関数\textsc{SolveSingleVariable}のアルゴリズムは以下のようになる．
+\begin{algorithmic}
+  \Function{SolveSingleVariable}{$P$, $Q$}
+    \State $P_\text{head}, P_\text{tail}, Q_\text{head}, Q_\text{tail} \gets \varnothing$
+    \ForAll{$(\boldsymbol{a}, \boldsymbol{b}) \in P$}
+      \If{$\boldsymbol{b} \ne \varepsilon$}
+        \State $P_\text{head} \gets P_\text{head} \cup \{\head \boldsymbol{b}\}$
+        \State $P_\text{tail} \gets P_\text{tail} \cup \{(\boldsymbol{a}, \tail \boldsymbol{b})\}$
+      \EndIf
+    \EndFor
+    \ForAll{$(\boldsymbol{c}, \boldsymbol{d}) \in Q$}
+      \If{$\boldsymbol{c} = \varepsilon$}
+        \If{$\boldsymbol{d} \ne \varepsilon$}
+          \State \Return $\varnothing$
+        \EndIf
+      \Else
+        \State $Q_\text{head} \gets Q_\text{head} \cup \{\head \boldsymbol{c}\}$
+        \State $Q_\text{tail} \gets Q_\text{tail} \cup \{(\tail \boldsymbol{c}, \boldsymbol{d})\}$
+      \EndIf
+    \EndFor
+    \If{$P_\text{head} = Q_\text{head} = \varnothing$}
+      \State \Return $\NN^*$
+    \EndIf
+    \State $S \gets \varnothing$
+    \If{
+      $\boldsymbol{a} \bw \boldsymbol{b}$ for all $(\boldsymbol{a}, \boldsymbol{b}) \in P$
+      \textbf{and} $\boldsymbol{c} \bw \boldsymbol{d}$ for all $(\boldsymbol{c}, \boldsymbol{d}) \in Q$
+    }
+      \State $S \gets \{ \varepsilon \}$
+    \EndIf
+    \If{$P_\text{head} \cup Q_\text{head} = \{x_1\}$ for some $x_1 \in \NN^*$}
+      \State $S \gets S \cup \{ (x_1, \boldsymbol{x}') \mid \boldsymbol{x}' \in \Call{SolveSingleVariable}{P_\text{tail}, Q_\text{tail}} \}$
+    \EndIf
+    \State \Return $S$
+  \EndFunction
+\end{algorithmic}
+\end{document}
